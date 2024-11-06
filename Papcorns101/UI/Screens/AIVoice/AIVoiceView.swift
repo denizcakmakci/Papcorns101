@@ -39,7 +39,7 @@ struct AIVoiceView: View {
                         VoicePickerView(viewModel: viewModel)
                             .padding(.bottom, 35)
                     }
-                    .padding(.all, 16)
+                    .padding(.vertical, 18)
                     .overlay(
                         LinearGradient(
                             gradient: Gradient(colors: [Color.systemBlack, Color.clear]),

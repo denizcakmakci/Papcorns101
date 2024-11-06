@@ -23,6 +23,7 @@ struct InspirationView: View {
                     .appFont(font: AppFonts.bodyRegular, lineSpacing: 5)
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .multilineTextAlignment(.leading)
+                    .padding(.leading, 5)
                 Spacer()
                 Button(action: action) {
                     HStack {
