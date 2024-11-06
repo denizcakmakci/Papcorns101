@@ -34,8 +34,10 @@ struct TopBarView: View {
             } label: {
                 Image(systemName: "ellipsis")
                     .foregroundColor(Color.white)
+                    .frame(width: 32, height: 32)
+                    .padding(8)
+                    .contentShape(Rectangle())
             }
-            .frame(width: 32)
         }
     }
 }

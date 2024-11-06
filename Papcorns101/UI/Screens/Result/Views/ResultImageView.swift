@@ -17,8 +17,7 @@ struct ResultImageView: View {
         ZStack(alignment: .bottomTrailing) {
             KFImage(URL(string: imageUrl))
                 .resizable()
-                .scaledToFill()
-                .frame(height: UIScreen.screenHeight * 0.4)
+                .frame(height: UIScreen.screenHeight * (UIScreen.isMinSizeDevice ? 0.3 : 0.4))
                 .padding(.bottom, 35)
                 .padding(.top, 16)
             Button {
