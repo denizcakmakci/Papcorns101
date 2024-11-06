@@ -34,7 +34,7 @@ DerivedData/
 .DS_Store
 
 ## Configration files
-*.xcconfig
+## *.xcconfig
 
 ## Playgrounds
 timeline.xctimeline

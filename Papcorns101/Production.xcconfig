@@ -1,0 +1,11 @@
+//
+//  Production.xcconfig
+//  Papcorns101
+//
+//  Created by Deniz Çakmakçı on 3.11.2024.
+//
+
+// Configuration settings file format documentation can be found at:
+// https://help.apple.com/xcode/#/dev745c5c974
+
+BASE_URL = us-central1-ai-video-40ecf.cloudfunctions.net/
