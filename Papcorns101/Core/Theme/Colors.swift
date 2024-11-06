@@ -21,4 +21,5 @@ extension Color {
     static let primaryColorWithOpacity = Color(red: 247/255, green: 108/255, blue: 198/255, opacity: 0.75)
     static let secondaryColor = Color(red: 84/255, green: 38/255, blue: 215/255, opacity: 1)
     static let secondaryColorWithOpacity = Color(red: 84/255, green: 38/255, blue: 215/255, opacity: 0.75)
+    static let loopButtonColor = Color(red: 147/255, green: 89/255, blue: 102/255, opacity: 1)
 }

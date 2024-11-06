@@ -30,7 +30,7 @@ struct GradientStrechButton: View {
                                 endPoint: .bottomTrailing
                             )
                         ) :
-                        AnyView(Color.primaryColor.opacity(0.2))
+                        AnyView(Color.primaryColor.opacity(0.4))
                 )
                 .foregroundColor(
                     isEnabled ? Color.white : Color.systemWhiteWithOpacity50

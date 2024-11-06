@@ -5,70 +5,92 @@
 //  Created by Deniz Çakmakçı on 6.11.2024.
 //
 
+import Kingfisher
 import SwiftUI
 
 struct ResultView: View {
     @StateObject private var audioPlayer = AudioPlayerManager()
     @EnvironmentObject var viewModel: AIVoiceViewModel
-    @State private var isLooping = false
+    @Environment(\.dismiss) var dismiss
+
+    @State private var showToast = false
 
     var body: some View {
         VStack {
-            // Progress Bar ve Zaman Etiketleri
-            VStack {
-                Slider(value: $audioPlayer.progress, in: 0 ... 1, onEditingChanged: { editing in
-                    if editing {
-                        audioPlayer.isSeeking = true // Kullanıcı kaydırma yapıyor
-                    } else {
-                        audioPlayer.isSeeking = false // Kaydırmayı bitirdi
-                        audioPlayer.seekToProgress()
+            switch viewModel.generatedMusicDataState {
+            case .failure(let error):
+                VStack {
+                    Text(error.localizedDescription.description)
+                        .padding(.bottom, 20)
+                }
+
+            case .success(let data):
+                ZStack {
+                    VStack(alignment: .leading) {
+                        TopBarView(
+                            title: viewModel.selectedVoiceItem?.name,
+                            shareAction: {
+                                audioPlayer.shareAudioFile(url: URL(string: data.resultUrl)!)
+                            },
+                            copyAction: {
+                                UIPasteboard.general.string = viewModel.selectedPromp
+                                showToast = true
+
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                                    showToast = false
+                                }
+                            }, backAction: {
+                                dismiss()
+                                viewModel.clearSelectedVoiceItem()
+                            }
+                        )
+                        ResultImageView(
+                            imageUrl: viewModel.selectedVoiceItem?.imageUrl ?? "",
+                            isLooping: audioPlayer.isLooping,
+                            buttonAction: {
+                                audioPlayer.isLooping.toggle()
+                            }
+                        )
+                        SliderView(
+                            audioPlayer: audioPlayer,
+                            sourceUrl: data.resultUrl,
+                            progress: $audioPlayer.progress,
+                            playAction: {
+                                audioPlayer.play(url: URL(string: data.resultUrl)!)
+                            },
+                            pauseAction: {
+                                audioPlayer.pause()
+                            }
+                        )
+                        SelectedPrompView(promp: viewModel.selectedPromp)
+                        GradientStrechButton(
+                            text: audioPlayer.isDownloading && !audioPlayer.isDownloadCompleted
+                                ? "\(LocalizationKeys.Result.downloading.translate()) \(Int(audioPlayer.downloadProgress * 100))%"
+                                : (audioPlayer.isDownloadCompleted ? LocalizationKeys.Result.completed.translate() : LocalizationKeys.Result.download.translate()),
+                            action: {
+                                if !audioPlayer.isDownloadCompleted {
+                                    audioPlayer.startDownload(url: URL(string: data.resultUrl)!)
+                                }
+                            }
+                        )
                     }
-                })
-                .controlSize(.small)
-                .padding(.horizontal)
-
-                HStack {
-                    Text(audioPlayer.currentTime) // Geçerli zaman
-                    Spacer()
-                    Text(audioPlayer.totalDuration) // Toplam süre
+                    .padding(.horizontal, 16)
+                    .navigationBarBackButtonHidden(true)
+                    if showToast {
+                        TextCopiedToast()
+                            .animation(.easeInOut, value: showToast)
+                    }
                 }
-                .font(.caption)
-                .padding(.horizontal)
-            }
 
-            // Play/Pause Butonu
-            HStack {
-                Button(action: {
-                    audioPlayer.isPlaying ? audioPlayer.pause() : audioPlayer.play(url: URL(string: viewModel.generatedMusicDataState.value?.resultUrl ?? "")!)
-                }) {
-                    Image(systemName: audioPlayer.isPlaying ? "pause.circle.fill" : "play.circle.fill")
-                        .font(.largeTitle)
-                }
-            }
-            .padding()
-
-            Button(action: {
-                audioPlayer.isLooping.toggle()
-            }) {
-                Image(systemName: audioPlayer.isLooping ? "repeat.circle.fill" : "repeat.circle")
-                    .font(.largeTitle)
-            }
-            Button(action: {
-                audioPlayer.startDownload(url: URL(string: viewModel.generatedMusicDataState.value?.resultUrl ?? "")!, fileName: viewModel.selectedVoiceItem?.name ?? "downloadedFile.mp3")
-            }) {
-                Text(audioPlayer.isDownloading ? "Downloading... \(Int(audioPlayer.downloadProgress * 100))%" : (audioPlayer.isDownloadCompleted ? "Completed" : "Download"))
-                    .font(.headline)
-                    .padding()
-                    .background(audioPlayer.isDownloading ? Color.gray : Color.blue)
-                    .foregroundColor(.white)
-                    .cornerRadius(8)
+            default:
+                EmptyView()
             }
         }
         .onAppear {
-            audioPlayer.loadAudio(url: URL(string: viewModel.generatedMusicDataState.value?.resultUrl ?? "")!) // Ses dosyasını yükle
+            audioPlayer.loadAudio(url: URL(string: viewModel.generatedMusicDataState.value?.resultUrl ?? "")!, fileName: viewModel.selectedVoiceItem?.name)
         }
         .onDisappear {
-            audioPlayer.stop() // Sayfa kaybolduğunda ses dosyasını durdur
+            audioPlayer.stop()
         }
     }
 }

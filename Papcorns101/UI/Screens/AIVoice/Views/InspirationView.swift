@@ -18,7 +18,7 @@ struct InspirationView: View {
                 .frame(maxWidth: .infinity)
                 .frame(height: 140)
             VStack(alignment: .leading) {
-                Text(text ?? "Write a text and let AI turn it into a speech with the voice of your favorite character")
+                Text(text ?? LocalizationKeys.AiVoice.defaultInspiration.translate())
                     .foregroundColor(text != nil ? Color.white : Color.systemWhiteWithOpacity50)
                     .appFont(font: AppFonts.bodyRegular, lineSpacing: 5)
                     .frame(maxWidth: .infinity, alignment: .leading)
@@ -26,7 +26,7 @@ struct InspirationView: View {
                 Spacer()
                 Button(action: action) {
                     HStack {
-                        Text("Get inspiration")
+                        Text(LocalizationKeys.AiVoice.getInspiration.translate())
                             .foregroundColor(Color.primaryColor)
                             .underline()
                         Image(AssetNames.tips.rawValue)

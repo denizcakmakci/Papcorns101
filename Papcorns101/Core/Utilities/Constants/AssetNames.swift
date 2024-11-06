@@ -12,4 +12,7 @@ enum AssetNames: String {
     case voice = "Voice"
     case loadingVideo = "GenerateMusic"
     case close = "Close"
+    case play = "Play"
+    case pause = "Pause"
+    case loop = "Loop"
 }

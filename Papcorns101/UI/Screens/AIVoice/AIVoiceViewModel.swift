@@ -6,12 +6,13 @@
 //
 
 import Foundation
+import UIKit
 
 @MainActor
 class AIVoiceViewModel: ObservableObject {
     @Published var screenDataState = UIState<VoicesModel>.empty
     @Published var generatedMusicDataState = UIState<GeneratedMusic>.empty
-    @Published var selectedCategory: String = "All"
+    @Published var selectedCategory: String = LocalizationKeys.AiVoice.all.translate()
     @Published var selectedPromp: String?
     @Published var selectedVoiceItem: VoiceModel?
     @Published var categories: [String]?
@@ -45,8 +46,10 @@ class AIVoiceViewModel: ObservableObject {
             if let objects = response.value?.objects {
                 let uniqueCategories = Set(objects.map { $0.category })
                 DispatchQueue.main.async {
-                    self.categories = ["All"] + Array(uniqueCategories)
-                    self.screenDataState = .success(response.value!)
+                    self.categories = [LocalizationKeys.AiVoice.all.translate()] + Array(uniqueCategories)
+                    if let value = response.value {
+                        self.screenDataState = .success(value)
+                    }
                 }
             } else {
                 if case .failure(let error) = response {
@@ -57,7 +60,7 @@ class AIVoiceViewModel: ObservableObject {
     }
 
     var filteredItems: [VoiceModel] {
-        if selectedCategory == "All" {
+        if selectedCategory == LocalizationKeys.AiVoice.all.translate() {
             return screenDataState.value?.objects ?? []
         } else {
             return screenDataState.value?.objects.filter { $0.category == selectedCategory } ?? []
@@ -75,6 +78,11 @@ class AIVoiceViewModel: ObservableObject {
     func selectRandomPromp() {
         selectedPromp = promps.randomElement() ?? ""
     }
+    
+    func clearSelectedVoiceItem() {
+        selectedVoiceItem = nil
+        selectedPromp = nil
+    }
 
     func generateMusic() async {
         generatedMusicDataState = .loading
@@ -82,9 +90,8 @@ class AIVoiceViewModel: ObservableObject {
             let response = await generateMusicUseCase.invoke(
                 arguments: GenerateMusicArguments(promp: selectedPromp, cover: selectedVoiceItem?.name)
             )
-            if let url = response.value?.resultUrl {
-                generatedMusicDataState = .success(response.value!)
-                print(url)
+            if let value = response.value {
+                generatedMusicDataState = .success(value)
             } else {
                 if case .failure(let error) = response {
                     generatedMusicDataState = .failure(error)

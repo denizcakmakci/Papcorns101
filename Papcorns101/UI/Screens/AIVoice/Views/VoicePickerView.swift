@@ -13,7 +13,7 @@ struct VoicePickerView: View {
 
     var body: some View {
         VStack {
-            ScrollView(.horizontal) {
+            ScrollView(.horizontal, showsIndicators: false) {
                 HStack {
                     ForEach(viewModel.categories ?? [], id: \.self) { category in
                         FilterTapItemView(
@@ -27,7 +27,7 @@ struct VoicePickerView: View {
                 }
                 .padding(.bottom, 12)
             }
-            ScrollView {
+            ScrollView(showsIndicators: false) {
                 LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible()), GridItem(.flexible())], spacing: 13) {
                     ForEach(viewModel.filteredItems, id: \.order) { item in
                         VStack {
@@ -40,6 +40,7 @@ struct VoicePickerView: View {
                             )
                             Text(item.name)
                                 .appFont(font: AppFonts.bodySemiBold, lineSpacing: 5)
+                                .lineLimit(1)
                         }
                     }
                 }

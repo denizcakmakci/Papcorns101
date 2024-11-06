@@ -10,6 +10,7 @@ import SwiftUI
 
 struct GeneratingMusicLoadingView: View {
     @ObservedObject var viewModel: GeneratingMusicLoadingViewModel
+    @Environment(\.dismiss) var dismiss
 
     init() {
         _viewModel = ObservedObject(wrappedValue: GeneratingMusicLoadingViewModel())
@@ -21,8 +22,7 @@ struct GeneratingMusicLoadingView: View {
                 ZStack(alignment: .topLeading) {
                     HStack {
                         Button(action: {
-                            // Kapatma butonu için yapılacak işlemler
-                            print("Kapatma butonuna tıklandı")
+                            dismiss()
                         }) {
                             Image(AssetNames.close.rawValue)
                                 .resizable()
@@ -51,10 +51,10 @@ struct GeneratingMusicLoadingView: View {
                     }
                 }
                 Spacer()
-                Text("Generating")
+                Text(LocalizationKeys.Generating.generating.translate())
                     .appFont(font: AppFonts.largeTitle, lineSpacing: 8)
                     .padding(.bottom, 8)
-                Text("It may take up to few minutes for you to receive an AI-generated speech. You can find your voice record in Library.")
+                Text(LocalizationKeys.Generating.generatingText.translate())
                     .multilineTextAlignment(.center)
                     .appFont(font: AppFonts.bodyRegular, lineSpacing: 3)
                     .padding(.horizontal, 20)

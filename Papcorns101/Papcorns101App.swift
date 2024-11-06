@@ -10,6 +10,7 @@ import SwiftUI
 @main
 struct Papcorns101App: App {
     @StateObject private var viewModel = AIVoiceViewModel()
+    @ObservedObject private var languageManager = LocalizationManager.shared
     
     var body: some Scene {
         WindowGroup {
@@ -17,6 +18,7 @@ struct Papcorns101App: App {
                 AIVoiceView()
                     .preferredColorScheme(.dark)
                     .environmentObject(viewModel)
+                    .environmentObject(languageManager)
             }
         }
     }
