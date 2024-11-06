@@ -18,7 +18,7 @@ extension Color {
     static let systemGray = Color(red: 131/255, green: 130/255, blue: 131/255, opacity: 1)
 
     static let primaryColor = Color(red: 247/255, green: 108/255, blue: 198/255, opacity: 1)
-    static let primaryColorWithOpacity30 = Color(red: 247/255, green: 108/255, blue: 198/255, opacity: 0.3)
+    static let primaryColorWithOpacity = Color(red: 247/255, green: 108/255, blue: 198/255, opacity: 0.75)
     static let secondaryColor = Color(red: 84/255, green: 38/255, blue: 215/255, opacity: 1)
-    static let secondaryColorWithOpacity30 = Color(red: 84/255, green: 38/255, blue: 215/255, opacity: 0.3)
+    static let secondaryColorWithOpacity = Color(red: 84/255, green: 38/255, blue: 215/255, opacity: 0.75)
 }

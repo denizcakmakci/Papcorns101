@@ -9,9 +9,15 @@ import SwiftUI
 
 @main
 struct Papcorns101App: App {
+    @StateObject private var viewModel = AIVoiceViewModel()
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            NavigationStack {
+                AIVoiceView()
+                    .preferredColorScheme(.dark)
+                    .environmentObject(viewModel)
+            }
         }
     }
 }

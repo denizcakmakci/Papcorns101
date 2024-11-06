@@ -22,7 +22,7 @@ struct AppFontModifier: ViewModifier {
 }
 
 extension View {
-    func appFont(font: Font, lineSpacing: CGFloat = 0, tracking: CGFloat = 0) -> some View {
+    func appFont(font: Font, lineSpacing: CGFloat = 0, tracking: CGFloat = -0.4) -> some View {
         modifier(AppFontModifier(font: font, lineSpacing: lineSpacing, tracking: tracking))
     }
 }
