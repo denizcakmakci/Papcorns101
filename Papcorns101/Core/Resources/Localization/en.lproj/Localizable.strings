@@ -1,0 +1,16 @@
+"ai_voice" = "AI Voice";
+"default_inspiration" = "Write a text and let AI turn it into a speech with the voice of your favorite character";
+"get_inspiration" = "Get inspiration";
+"pick_voice" = "Pick a Voice";
+"all" = "All";
+"button_continue" = "Continue";
+"generating" = "Generating";
+"generating_text" = "It may take up to few minutes for you to receive an AI-generated speech. You can find your voice record in Library.";
+"loop" = "Loop";
+"text" = "Text";
+"download" = "Download";
+"completed" = "Completed";
+"downloading" = "Downloading...";
+"share" = "Share";
+"copy_text" = "Copy Text";
+"copied" = "Copied!";

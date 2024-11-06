@@ -1,0 +1,16 @@
+"ai_voice" = "Yapay Zeka Sesi";
+"default_inspiration" = "Bir metin yazın ve AI'nın favori karakterinizin sesiyle buna bir konuşma dönüştürmesini izleyin";
+"get_inspiration" = "İlham Al";
+"pick_voice" = "Bir Ses Seç";
+"all" = "Tümü";
+"button_continue" = "Devam Et";
+"generating" = "Oluşturuluyor";
+"generating_text" = "Bir AI tarafından oluşturulan konuşmayı almanız birkaç dakika sürebilir. Ses kaydınızı Kütüphane'de bulabilirsiniz.";
+"loop" = "Tekrar Et";
+"text" = "Metin";
+"download" = "İndir";
+"completed" = "Tamamlandı";
+"downloading" = "İndiriliyor...";
+"share" = "Paylaş";
+"copy_text" = "Metni Kopyala";
+"copied" = "Kopyalandı!";

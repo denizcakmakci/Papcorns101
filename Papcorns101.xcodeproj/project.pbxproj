@@ -6,6 +6,11 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		227CACA62CDA3195009BB112 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 227CACA52CDA3195009BB112 /* Kingfisher */; };
+		22BFEA102CD7C47E0001A654 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 22BFEA0F2CD7C47E0001A654 /* Alamofire */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		22B7FEF42CD7A893005754A5 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -29,9 +34,22 @@
 		22B7FEFD2CD7A893005754A5 /* Papcorns101UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Papcorns101UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		22B7FF152CD7B115005754A5 /* Exceptions for "Papcorns101" folder in "Papcorns101" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 22B7FEE22CD7A891005754A5 /* Papcorns101 */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		22B7FEE52CD7A891005754A5 /* Papcorns101 */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				22B7FF152CD7B115005754A5 /* Exceptions for "Papcorns101" folder in "Papcorns101" target */,
+			);
 			path = Papcorns101;
 			sourceTree = "<group>";
 		};
@@ -52,6 +70,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				227CACA62CDA3195009BB112 /* Kingfisher in Frameworks */,
+				22BFEA102CD7C47E0001A654 /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -112,6 +132,8 @@
 			);
 			name = Papcorns101;
 			packageProductDependencies = (
+				22BFEA0F2CD7C47E0001A654 /* Alamofire */,
+				227CACA52CDA3195009BB112 /* Kingfisher */,
 			);
 			productName = Papcorns101;
 			productReference = 22B7FEE32CD7A891005754A5 /* Papcorns101.app */;
@@ -192,9 +214,14 @@
 			knownRegions = (
 				en,
 				Base,
+				tr,
 			);
 			mainGroup = 22B7FEDA2CD7A891005754A5;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				22BFEA0E2CD7C47E0001A654 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				227CACA42CDA3195009BB112 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 22B7FEE42CD7A891005754A5 /* Products */;
 			projectDirPath = "";
@@ -271,9 +298,12 @@
 /* Begin XCBuildConfiguration section */
 		22B7FF052CD7A893005754A5 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReferenceAnchor = 22B7FEE52CD7A891005754A5 /* Papcorns101 */;
+			baseConfigurationReferenceRelativePath = Production.xcconfig;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -328,15 +358,19 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
 		22B7FF062CD7A893005754A5 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReferenceAnchor = 22B7FEE52CD7A891005754A5 /* Papcorns101 */;
+			baseConfigurationReferenceRelativePath = Production.xcconfig;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -384,6 +418,7 @@
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -399,6 +434,7 @@
 				DEVELOPMENT_TEAM = B27XVP64K3;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Papcorns101/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -428,6 +464,7 @@
 				DEVELOPMENT_TEAM = B27XVP64K3;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Papcorns101/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -558,6 +595,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		227CACA42CDA3195009BB112 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 8.1.0;
+			};
+		};
+		22BFEA0E2CD7C47E0001A654 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.10.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		227CACA52CDA3195009BB112 /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 227CACA42CDA3195009BB112 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
+		22BFEA0F2CD7C47E0001A654 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 22BFEA0E2CD7C47E0001A654 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 22B7FEDB2CD7A891005754A5 /* Project object */;
 }
